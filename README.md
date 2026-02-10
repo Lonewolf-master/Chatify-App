@@ -9,5 +9,7 @@ cd ./backend
     + npm i bcryptjs@2.4.3
     + npm i dotenv@16.4.7 
     + npm i cookie-parser@1.4.7
+    + npm i mongoose
+    + npm i nodemon
 cd ./frontend
     + npm create vite@latest
