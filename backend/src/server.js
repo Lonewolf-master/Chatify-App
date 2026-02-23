@@ -2,6 +2,8 @@
 import express from 'express';
 const app = express();
 
+import { connectionDB } from "./lib/db.js"
+
 import dotenv from 'dotenv';
 dotenv.config();;
 
@@ -26,7 +28,7 @@ if(process.env.NODE_ENV === "production"){
     });
 }
 
-import { connectionDB } from "./lib/db.js"
+
 
 const port = process.env.PORT || 4000; 
 
