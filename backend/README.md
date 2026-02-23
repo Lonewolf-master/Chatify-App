@@ -1,0 +1,1 @@
+Register-account: api/auth/signup

@@ -1,11 +1,11 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import { generateToken }from "../lib/utils.js"
+import { generateToken }from "../lib/generateJWT.js"
 
 export const signup = async (req, res) => {
     console.log(req.body)
     const { fullName, email, password } = req.body;
-    console.log("Signup function is callin")
+    console.log("Signup function is calling")
     try{
 
         if(!fullName || !email || !password){
@@ -56,7 +56,6 @@ export const signup = async (req, res) => {
     }catch (error){
         console.error(error);
         res.status(500).json({message: "Internal Server error"})
-
-}
+    }
     // Logic to handle user signup
 }
