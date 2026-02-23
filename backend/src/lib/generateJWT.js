@@ -17,6 +17,6 @@ export const generateToken = (userId, res) => {
         sameSite: "strict", // prevent CSRF attacks
         secure: NODE_ENV == "development" ? false : true // only send
     })
-
+    
     return token;
 }
