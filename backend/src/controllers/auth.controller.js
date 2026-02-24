@@ -4,9 +4,9 @@ import { generateToken }from "../lib/generateJWT.js"
 import sendWelcomeEmail from "../email/sendEmail.js"
 
 export const signup = async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const { fullName, email, password } = req.body;
-    console.log("Signup function is calling")
+    // console.log("Signup function is calling")
     try{
 
         if(!fullName || !email || !password){
@@ -40,6 +40,12 @@ export const signup = async (req, res) => {
         })
 
         if(newUser){
+
+            await sendWelcomeEmail(newUser, res).catch( (error)=> {
+                    console.log("Failed to send Welcome Email")
+                    console.error(error)
+                })
+
             generateToken(newUser._id, res)
                 res.status(201).json({
                     _id: newUser._id,
@@ -47,13 +53,6 @@ export const signup = async (req, res) => {
                     email: newUser.email,
                     profilePic: newUser.profilePic  
                 })
-
-            try {
-                await sendWelcomeEmail(newUser, res) 
-            } catch (error) {
-                console.log("Failed to send Welcome Email")
-                console.error(error)
-            }
 
             //Todo: send a notification to the admin that a new user
             // Todo: send a notification to the new user that they have been registered
@@ -65,4 +64,38 @@ export const signup = async (req, res) => {
         res.status(500).json({message: "Internal Server error"})
     }
     // Logic to handle user signup
+}
+
+
+export const login = async (req, res)=>{
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({email})
+
+        if(!user) return res.status(400).json({message:"Invalid credenntials" })
+        // never tell the client which one is incorrect: password or email
+        
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+       
+        if(!isPasswordCorrect)  return res.status(400).json({message:"Invalid credenntials" })
+
+        generateToken(user._id, res)
+
+        console.log(user)
+
+         res.status(200).json(user);
+        
+    } catch (error) {
+        console.error("Errro in login controller: ", error);
+        res.status(500).json({message: "Internal Server error"})
+        
+    }
+
+}
+
+export const logout= (_, res)=>{
+    //getting ready of the cookies name jwt
+    res.cookie("jwt","",{maxAge: 0})
+    console.log("LoggedOut")
+    res.status(200).json({message: "Logged out successfully"})
 }
