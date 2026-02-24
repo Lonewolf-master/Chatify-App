@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Welcome to Chatify!</title>
+    </head>
+    <body style="margin: 0; padding: 40px 16px; background-color: #0D1115; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+      <center>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #1D262D; border-top: 5px solid #3BC6FF; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+          
+          <tr>
+            <td align="center" style="padding: 40px 0 24px 0;">
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding-right: 12px;">
+                    <div style="width: 32px; height: 32px; border: 2.5px solid #3BC6FF; border-radius: 6px; position: relative;">
+                        <div style="position: absolute; bottom: 4px; left: 4px; width: 4px; height: 4px; background: #3BC6FF; border-radius: 50%;"></div>
+                        <div style="position: absolute; bottom: 4px; left: 12px; width: 4px; height: 4px; background: #3BC6FF; border-radius: 50%;"></div>
+                        <div style="position: absolute; bottom: 4px; left: 20px; width: 4px; height: 4px; background: #3BC6FF; border-radius: 50%;"></div>
+                    </div>
+                  </td>
+                  <td>
+                    <h1 style="color: #FFFFFF; font-size: 30px; font-weight: 800; margin: 0; letter-spacing: 0.025em; font-family: sans-serif;">Chatify</h1>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding: 0 40px 40px 40px;">
+              <h2 style="color: #FFFFFF; font-size: 24px; font-weight: 600; margin: 0 0 16px 0;">Welcome to the conversation!</h2>
+              
+              <div style="background-color: #3BC6FF; padding: 4px 12px; display: inline-block; border-radius: 4px; margin-bottom: 8px;">
+                <h3 style="color: #FFFFFF; font-size: 20px; font-weight: 600; margin: 0;">${name}</h3>
+              </div>
+              <br>
+              <div style="background-color: #3BC6FF; padding: 4px 12px; display: inline-block; border-radius: 4px; margin-bottom: 8px;">
+                <h3 style="color: #FFFFFF; font-size: 20px; font-weight: 600; margin: 0;">${email}</h3>
+              </div>
+
+              <p style="color: #8CA3B3; font-size: 16px; line-height: 1.6; margin: 24px 0 32px 0;">
+                We're excited to have you join Chatify. To get started and ensure the security of your account, please use the OTP code below or click the button to verify your email address.
+              </p>
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 32px;">
+                <tr>
+                  <td align="center">
+                    <p style="color: #8CA3B3; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin: 0 0 12px 0;">Your Verification Code</p>
+                    <div style="background-color: #0D1115; border: 1px dashed #3BC6FF; border-radius: 8px; padding: 20px; color: #FFFFFF; font-size: 48px; font-weight: bold; letter-spacing: 0.3em; text-align: center;">
+                      ${otp}
+                    </div>
+                    <p style="color: #8CA3B3; font-size: 12px; margin: 12px 0 0 0;">This code will expire in 15 minutes.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 32px;">
+                <tr>
+                  <td width="33%"><div style="height: 1px; background-color: #0D1115;"></div></td>
+                  <td width="34%" align="center" style="color: #8CA3B3; font-size: 14px; font-weight: 500;">OR</td>
+                  <td width="33%"><div style="height: 1px; background-color: #0D1115;"></div></td>
+                </tr>
+              </table>
+
+              <a href="${URL}" style="display: inline-block; background-color: #3BC6FF; color: #0D1115; padding: 16px 32px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none;">
+                Verify Email Address
+              </a>
+
+              <div style="margin-top: 40px; text-align: left;">
+                <p style="color: #8CA3B3; font-size: 14px; line-height: 1.5; margin: 0 0 4px 0;">
+                  If the button above doesn't work, copy and paste the following link into your browser:
+                </p>
+                <a href="${URL}" style="color: #3BC6FF; font-size: 14px; text-decoration: none; word-break: break-all;">
+                  ${URL}
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="background-color: #0D1115; padding: 32px; border-top: 1px solid #1D262D;">
+              <p style="color: #FFFFFF; font-size: 16px; font-weight: 600; margin: 0 0 4px 0;">Need more help?</p>
+              <a href="#" style="color: #3BC6FF; font-size: 14px; font-weight: 500; text-decoration: none;">We're here, ready to talk</a>
+            </td>
+          </tr>
+        </table>
+
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin-top: 32px; text-align: center; color: #8CA3B3; font-size: 12px; line-height: 1.6;">
+          <tr>
+            <td style="padding-bottom: 24px;">
+              <a href="#" style="color: #FFFFFF; text-decoration: none; font-weight: 500; margin: 0 6px;">Dashboard</a> | 
+              <a href="#" style="color: #FFFFFF; text-decoration: none; font-weight: 500; margin: 0 6px;">Billing</a> | 
+              <a href="#" style="color: #FFFFFF; text-decoration: none; font-weight: 500; margin: 0 6px;">Help</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p style="margin: 0 0 16px 0;">You received this email because you just signed up for a new account on Chatify.<br>If you did not make this request, please ignore this email.</p>
+              <p style="margin: 0 0 16px 0;">If these emails get annoying, please feel free to <a href="#" style="color: #3BC6FF; text-decoration: none;">unsubscribe</a>.</p>
+              <p style="margin: 0;">Chatify Inc. • 1234 Neon Street • Cyber City, CC • 56789</p>
+            </td>
+          </tr>
+        </table>
+      </center>
+    </body>
+    </html>

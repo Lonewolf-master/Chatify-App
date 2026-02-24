@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateToken }from "../lib/generateJWT.js"
+import sendWelcomeEmail from "../email/sendEmail.js"
 
 export const signup = async (req, res) => {
     console.log(req.body)
@@ -46,8 +47,14 @@ export const signup = async (req, res) => {
                     email: newUser.email,
                     profilePic: newUser.profilePic  
                 })
-            // Todo: send a welcome email to the new user
-            // Todo: send a confirmation email to the new user
+
+            try {
+                await sendWelcomeEmail(newUser, res) 
+            } catch (error) {
+                console.log("Failed to send Welcome Email")
+                console.error(error)
+            }
+
             //Todo: send a notification to the admin that a new user
             // Todo: send a notification to the new user that they have been registered
         }else{
