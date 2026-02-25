@@ -2,6 +2,8 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateToken }from "../lib/generateJWT.js"
 import sendWelcomeEmail from "../email/sendEmail.js"
+import cloudinary from "../lib/cloudinary.js"
+
 
 export const signup = async (req, res) => {
     // console.log(req.body)
@@ -98,4 +100,24 @@ export const logout= (_, res)=>{
     res.cookie("jwt","",{maxAge: 0})
     console.log("LoggedOut")
     res.status(200).json({message: "Logged out successfully"})
+}
+
+export const updateProfile= async(req, res)=>{
+    const {profilePic} = req.body;  
+
+    try { 
+        if(!profilePic) return res.status(400).json({massage: "Profile pic is required"})
+        const UserId = req.user._id
+        const uploadResponse= await cloudinary.uploader.upload(profilePic)
+        const updatedUser = await User.findByIdAndDelete(
+            UserId,
+            {profilePic: uploadResponse.secure_url},
+            {new:true} //this return the user Updated object
+        )
+        res.status(200).json(updatedUser)
+         
+    } catch (error) {
+        console.error("Errro in update profile: \n", error);
+        res.status(500).json({message: "Internal Server error"})  
+    }
 }
