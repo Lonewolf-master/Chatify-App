@@ -2,7 +2,8 @@ import { ENV } from "./env.js";
 import arcjet, { shield, detectBot, slidingWindow } from "@arcjet/node";
 import { isSpoofedBot } from "@arcjet/inspect";
 
-const mode =  ENV.ARCJET_KEY ?? (ENV.NODE_ENV === "production"? "LIVE" : "DRY_RUN")
+const mode =  ENV.NODE_ENV === "production"? "LIVE" : "DRY_RUN"
+// console.log(mode,"mode")
 const aj = arcjet({
   // Get your site key from https://app.arcjet.com and set it as an environment
   // variable rather than hard coding.
